@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <title>BYD XIA - Premium Electric Car</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(20, 19, 19, 0.644);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #logo {
+            height: 20px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        .cta-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #004c99;
+            transform: scale(1.05);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        /* Hero section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #f9f9f9;
+            position: relative;
+            padding-top: 70px;
+            overflow: hidden;
+        }
+
+        #hero-img-container {
+            width: 100%;
+            height: 70%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        #hero-content {
+            padding: 2rem 5%;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .slogan {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .key-features {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-badge {
+            display: flex;
+            align-items: center;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .feature-badge img {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+        }
+
+        /* Description section */
+        #description {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .description-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .description-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .highlights {
+            margin: 1.5rem 0;
+        }
+
+        .highlights li {
+            margin-bottom: 0.5rem;
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        /* Gallery */
+        #gallery {
+            padding: 5rem 5%;
+            background-color: #f9f9f9;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .view-360 {
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .view-360-container {
+            width: 100%;
+            height: 400px;
+            margin: 1rem auto;
+            background-color: #eee;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .view-360-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .rotate-controls {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .rotate-btn {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .rotate-btn:hover {
+            background-color: white;
+        }
+
+        /* Technical specifications */
+        #specs {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .specs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .specs-table {
+            flex: 1;
+            min-width: 300px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .specs-table th {
+            text-align: left;
+            padding: 1rem 0;
+            color: #777;
+            font-weight: 600;
+        }
+
+        .specs-table td {
+            padding: 1rem 0;
+            font-weight: 500;
+        }
+
+        .specs-graphics {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .spec-graphic {
+            display: flex;
+            align-items: center;
+        }
+
+        .spec-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(0, 102, 204, 0.1);
+            overflow: hidden;
+        }
+
+        .spec-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .spec-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .spec-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Customization */
+        #customization {
+            padding: 5rem 10%;
+            background-color: #f9f9f9;
+        }
+
+        .customization-container {
+            margin-top: 2rem;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.active {
+            border-color: #0066cc;
+        }
+
+        .color-preview {
+            width: 100%;
+            height: 300px;
+            margin: 1rem 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .options-group {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .option-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .option-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .option-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .option-checkbox {
+            margin-right: 0.5rem;
+            width: 18px;
+            height: 18px;
+        }
+
+        .price-summary {
+            background-color: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+        }
+
+        /* Testimonials */
+        #testimonials {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .testimonials-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: #0066cc #f0f0f0;
+        }
+
+        .testimonials-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-thumb {
+            background-color: #0066cc;
+            border-radius: 10px;
+        }
+
+        .testimonial {
+            min-width: 300px;
+            flex: 0 0 calc(33.333% - 1rem);
+            scroll-snap-align: start;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .rating {
+            color: gold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .customer-name {
+            font-weight: 600;
+        }
+
+        /* Contact section */
+        #contact {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #0066cc;
+            outline: none;
+        }
+
+        .contact-actions {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-btn {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .contact-btn-primary {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .contact-btn-primary:hover {
+            background-color: #004c99;
+        }
+
+        .contact-btn-secondary {
+            background-color: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+
+        .contact-btn-secondary:hover {
+            background-color: #f0f8ff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background-color: #050000da;
+            color: #fff;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #0066cc;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* Improved Responsive Styles */
+        @media (max-width: 1024px) {
+            .testimonial {
+                flex: 0 0 calc(50% - 1rem);
+            }
+            
+            .view-360-container {
+                height: 350px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(20, 19, 19, 0.9);
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .key-features {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .feature-badge {
+                margin: 0.2rem 0;
+                width: 100%;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .slogan {
+                font-size: 1.1rem;
+            }
+
+            .testimonial {
+                min-width: 260px;
+                flex: 0 0 calc(100% - 1rem);
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 150px;
+            }
+            
+            .view-360-container {
+                height: 250px;
+            }
+            
+            .specs-table th, .specs-table td {
+                padding: 0.7rem 0;
+            }
+            
+            .spec-value {
+                font-size: 1.2rem;
+            }
+            
+            #specs, #description, #customization, #testimonials, #contact {
+                padding: 4rem 5%;
+            }
+            
+            .option-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .option-price {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            #hero-img-container {
+                height: 50%;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .view-360-container {
+                height: 200px;
+            }
+            
+            .color-options {
+                gap: 0.5rem;
+            }
+            
+            .color-option {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .color-preview {
+                height: 200px;
+            }
+            
+            .specs-graphics {
+                gap: 1rem;
+            }
+            
+            .spec-graphic {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .spec-icon {
+                margin: 0 auto;
+            }
+            
+            .form-group label {
+                font-size: 0.9rem;
+            }
+            
+            .form-control {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+            
+            .contact-btn {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+            
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+            
+            .social-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .total-price {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="logo.svg" alt="Logo" id="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cars.html">Cars</a></li>
+                <li><a href="#">Promotions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+       
+        <button class="mobile-menu-btn">☰</button>
+    </header>
+
+    <!-- Hero section -->
+    <section id="hero">
+        
+        <div id="hero-content">
+            <h1 class="fade-in">BYD XIA</h1>
+            <p class="slogan fade-in delay-1">Rediscover driving with zero emissions.</p>
+            <div class="key-features fade-in delay-2">
+                <div class="feature-badge">
+                    <img src="autonomie.avif" alt="Range">
+                    630 km Range
+                </div>
+                <div class="feature-badge">
+                    <img src="battery.png" alt="Charging">
+                    Fast charging in 30 minutes
+                </div>
+                <div class="feature-badge">
+                    <img src="autonome.jpg" alt="Technology">
+                    Autonomous driving technology
+                </div>
+            </div>
+            
+            
+            <button class="cta-button fade-in delay-3">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Description section -->
+    <section id="description">
+        <h2>Discover the BYD XIA</h2>
+        <div class="description-container">
+            <div class="description-text">
+                <p>The BYD XIA represents the future of electric mobility. Combining exceptional performance, impressive range, and cutting-edge technologies, this electric car redefines the driving experience.</p>
+                <p>Its aerodynamic and futuristic design sacrifices nothing in comfort, offering a spacious and luxurious interior for all passengers.</p>
+                <ul class="highlights">
+                    <li>100% electric with zero emissions</li>
+                    <li>Unmatched performance with acceleration from 0 to 100 km/h in 3.4 seconds</li>
+                    <li>Futuristic design with Falcon Wing doors</li>
+                    <li>Latest generation autonomous driving system</li>
+                    <li>17-inch touchscreen with advanced connectivity</li>
+                </ul>
+            </div>
+            <div class="video-container">
+                <img src="xia.jpg" alt="Presentation video">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="xia-face.jpg" alt="BYD Dolphin - Exterior">
+            </div>
+            <div class="gallery-item">
+                <img src="xia-int-1.webp" alt="BYD Dolphin - Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="xia-int-2.png" alt="BYD Dolphin - Dashboard">
+            </div>
+            <div class="gallery-item">
+                <img src="xia-int-3.png" alt="BYD Dolphin - Falcon Doors">
+            </div>
+            <div class="gallery-item">
+                <img src="xia-int-4.jpg" alt="BYD Dolphin - Falcon Doors">
+            </div>
+            <div class="gallery-item">
+                <img src="xia-int-5.jpg" alt="BYD Dolphin - Falcon Doors">
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Technical specifications -->
+    <section id="specs">
+        <h2>Technical Specifications</h2>
+        <div class="specs-container">
+            <table class="specs-table">
+                <tr>
+                    <th>Battery</th>
+                    <td>BYD BladeBattery (LFP)</td>
+                </tr>
+                <tr>
+                    <th>Range</th>
+                    <td>630 (WLTP Combined)</td>
+                </tr>
+                <tr>
+                    <th>Power</th>
+                    <td>670 hp (500 kW)</td>
+                </tr>
+                <tr>
+                    <th>Acceleration</th>
+                    <td>0-100 km/h in 3.4 seconds</td>
+                </tr>
+                <tr>
+                    <th>Top speed</th>
+                    <td>230 km/h</td>
+                </tr>
+                <tr>
+                    <th>Charging</th>
+                    <td>30 min for 80% (Supercharger)</td>
+                </tr>
+                <tr>
+                    <th>Dimensions</th>
+                    <td>L 5.05m x W 2.07m x H 0.98m</td>
+                </tr>
+            </table>
+            <div class="specs-graphics">
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="speed.jpg" alt="Speed">
+                    </div>
+                    <div>
+                        <div class="spec-value">180 km/h</div>
+                        <div class="spec-label">Maximum speed</div>
+                    </div>
+                </div>
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="range.png" alt="Range">
+                    </div>
+                    <div>
+                        <div class="spec-value">630 km</div>
+                        <div class="spec-label">Range (WLTP)</div>
+                    </div>
+                </div>
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="acceleration.webp" alt="Acceleration">
+                    </div>
+                    <div>
+                        <div class="spec-value">3.4 s</div>
+                        <div class="spec-label">0-100 km/h</div>
+                    </div>
+                </div>
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="charging.jpg" alt="Charging">
+                    </div>
+                    <div>
+                        <div class="spec-value">30 min</div>
+                        <div class="spec-label">Fast charging (80%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization -->
+    <section id="customization">
+        <h2>Customize your BYD XIA</h2>
+        <div class="customization-container">
+            <div class="color-options">
+                <div class="color-option active" style="background-color: #31389b;"></div>
+                <div class="color-option" style="background-color: #01f74b;"></div>
+                <div class="color-option" style="background-color: #0c0000;"></div>
+                <div class="color-option" style="background-color: #ffee00;"></div>
+                
+            </div>
+            <div class="color-preview">
+                <img src="xia-blue.jpg" alt="BYD Dolphin - Black">
+            </div>
+            <div class="options-container">
+                <div class="options-group">
+                    <div class="option-title">Interior</div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="radio" name="interior" id="interior-black" class="option-checkbox" checked>
+                            <label for="interior-black">Premium Black</label>
+                        </div>
+                        <div class="option-price">Included</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="radio" name="interior" id="interior-white" class="option-checkbox">
+                            <label for="interior-white">Premium White</label>
+                        </div>
+                        <div class="option-price">+€1,500</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="radio" name="interior" id="interior-beige" class="option-checkbox">
+                            <label for="interior-beige">Premium Beige</label>
+                        </div>
+                        <div class="option-price">+€1,500</div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <div class="option-title">Equipment</div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="checkbox" id="autopilot" class="option-checkbox">
+                            <label for="autopilot">Enhanced Autopilot</label>
+                        </div>
+                        <div class="option-price">+€800</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="checkbox" id="fsd" class="option-checkbox">
+                            <label for="fsd">Full Self-Driving Capability</label>
+                        </div>
+                        <div class="option-price">+€1,500</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="checkbox" id="premium-audio" class="option-checkbox">
+                            <label for="premium-audio">Premium Audio System</label>
+                        </div>
+                        <div class="option-price">+€700</div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-summary">
+                <div class="price-row">
+                    <div>Base Price</div>
+                    <div>€29,000 </div>
+                </div>
+                <div class="price-row">
+                    <div>Options</div>
+                    <div>€0</div>
+                </div>
+                <div class="price-row total-price">
+                    <div>Total Price</div>
+                    <div>€29,000</div>
+                    
+                </div>
+                <button class="cta-button" onclick="window.location.href='https://tawk.to/buildyourdream';">Buy Now</button>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+<section id="testimonials">
+    <h2>Customer Testimonials</h2>
+    <div class="testimonials-container">
+        <div class="testimonial">
+            <div class="rating">★★★★★</div>
+            <p class="testimonial-text">"After 6 months of use, I am completely won over. The battery life is perfect for my daily needs, and the performance is impressive."</p>
+            <div class="customer-name">Friedrich D.</div>
+        </div>
+        <div class="testimonial">
+            <div class="rating">★★★★☆</div>
+            <p class="testimonial-text">"Excellent car, comfortable and quiet. The Tesla charging network is a real plus for long trips."</p>
+            <div class="customer-name">Anouk L.</div>
+        </div>
+        <div class="testimonial">
+            <div class="rating">★★★★★</div>
+            <p class="testimonial-text">"The driver assistance features are revolutionary. It's a real pleasure to drive this car every day."</p>
+            <div class="customer-name"> Klaus B.</div>
+        </div>
+        <div class="testimonial">
+            <div class="rating">★★★★★</div>
+            <p class="testimonial-text">"The price-quality ratio is excellent. The savings on fuel and maintenance are significant in the long run."</p>
+            <div class="customer-name">Sophie M.</div>
+        </div>
+    </div>
+</section>
+
+<!-- Comparison -->
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" rows="5"></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send</button>
+            </form>
+        </div>
+        <div class="contact-actions">
+            <button class="contact-btn contact-btn-primary" onclick="window.location.href='https://tawk.to/buildyourdream';">Buy Now</button>
+            <button class="contact-btn contact-btn-secondary" onclick="window.location.href='https://tawk.to/buildyourdream';">Request a Quote</button>
+            <button class="contact-btn contact-btn-secondary" onclick="window.location.href='https://tawk.to/buildyourdream';">Find a Dealer</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About</h3>
+            <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Our Values</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Technical Support</a></li>
+                <li><a href="#">Warranty</a></li>
+                <li><a href="#">Manuals</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <ul>
+                <li><a href="https://tawk.to/buildyourdream">Contact Us</a></li>
+                <li><a href="#">Dealers</a></li>
+                <li><a href="#">Press</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="#" class="social-icon">f</a>
+                <a href="#" class="social-icon">t</a>
+                <a href="#" class="social-icon">in</a>
+                <a href="#" class="social-icon">ig</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 BYD Company. All rights reserved.</p>
+        <p><a href="#">Legal Notice</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+    </div>
+</footer>
+
+
+    <!-- Script JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Gestion du menu mobile
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+    
+    // Gestion du bouton "En savoir plus"
+    const learnMoreBtn = document.querySelector('#hero .cta-button');
+    const descriptionSection = document.querySelector('#description');
+    
+    learnMoreBtn.addEventListener('click', function() {
+        descriptionSection.scrollIntoView({ behavior: 'smooth' });
+    });
+    
+    // Gestion de la personnalisation des couleurs
+    const colorOptions = document.querySelectorAll(".color-option");
+    const carImage = document.querySelector(".color-preview img");
+    
+    // Associer chaque couleur à l'image correspondante
+    const colorImages = {
+        "#000000": "dolphin-noir.jpg",
+        "rgb(255, 255, 255)": "dolphin-blanc.jpg",
+        "rgb(255, 0, 0)": "dolphin-rouge.jpg",
+        "rgb(0, 0, 255)": "dolphin-bleu.jpg",
+        "#888888": "dolphin-gris.png"
+    };
+
+    colorOptions.forEach(option => {
+        option.addEventListener("click", function () {
+            // Supprimer la classe active de toutes les options
+            colorOptions.forEach(opt => opt.classList.remove("active"));
+            
+            // Ajouter la classe active à l'option sélectionnée
+            option.classList.add("active");
+            
+            // Changer l'image en fonction de la couleur sélectionnée
+            const selectedColor = window.getComputedStyle(option).backgroundColor;
+            const hexColor = rgbToHex(selectedColor);
+            
+            if (colorImages[hexColor]) {
+                carImage.src = colorImages[hexColor];
+                carImage.alt = `BYD Dolphin - ${hexColor}`;
+            }
+        });
+    });
+    
+    // Fonction pour convertir rgb en hex
+    function rgbToHex(rgb) {
+        const rgbValues = rgb.match(/\d+/g);
+        return "#" + rgbValues.map(x => {
+            const hex = parseInt(x).toString(16);
+            return hex.length === 1 ? "0" + hex : hex;
+        }).join("");
+    }
+    
+    // Gestion du calcul du prix
+    const optionCheckboxes = document.querySelectorAll('.option-checkbox');
+    const priceBase = 29000;
+    const priceOptions = document.querySelector('.price-row:nth-child(2) div:last-child');
+    const priceTotal = document.querySelector('.total-price div:last-child');
+    
+    optionCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            let optionsTotal = 0;
+            
+            // Calcul pour l'intérieur
+            const interiorOptions = document.querySelectorAll('input[name="interior"]');
+            interiorOptions.forEach(option => {
+                if (option.checked && option.id !== 'interior-black') {
+                    optionsTotal += 1500;
+                }
+            });
+            
+            // Calcul pour les équipements
+            if (document.getElementById('autopilot').checked) {
+                optionsTotal += 800;
+            }
+            if (document.getElementById('fsd').checked) {
+                optionsTotal += 1500;
+            }
+            if (document.getElementById('premium-audio').checked) {
+                optionsTotal += 700;
+            }
+            
+            // Mise à jour des prix affichés
+            priceOptions.textContent = optionsTotal.toLocaleString() + ' €';
+            priceTotal.textContent = (priceBase + optionsTotal).toLocaleString() + ' €';
+        });
+    });
+    
+    // Simulation de la vue 360°
+    const rotateButtons = document.querySelectorAll('.rotate-btn');
+    const view360Img = document.querySelector('.view-360-container img');
+    let currentRotation = 1;
+    const totalRotations = 8; // Nombre d'images de rotation
+    
+    rotateButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            // Rotation gauche ou droite
+            if (index === 0) { // Bouton gauche
+                currentRotation = (currentRotation - 1 + totalRotations) % totalRotations || totalRotations;
+            } else { // Bouton droit
+                currentRotation = (currentRotation % totalRotations) + 1;
+            }
+            
+            // Mise à jour de l'image (simulée)
+            view360Img.alt = `Vue 360° Tesla Model X - Position ${currentRotation}`;
+        });
+    });
+});
+
+
+
+    </script>
+</body>
+</html>
