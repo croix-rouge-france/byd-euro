@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <title>Build Your Dream - Your Premium Dealership</title>
+    <style>
+        :root {
+            --primary-color: #0a0a0a;
+            --accent-color: #e60023;
+            --neon-blue: #00f0ff;
+            --text-color: #ffffff;
+            --dark-overlay: rgba(0, 0, 0, 0.7);
+            --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: var(--gradient-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-color), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            color: var(--neon-blue);
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('forklift-bg.jpg') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 64px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(230, 0, 35, 0.5);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(230, 0, 35, 0.6);
+        }
+        
+        .categories {
+            padding: 100px 50px;
+            background: var(--primary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--neon-blue);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .category-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+        
+        .category-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .category-count {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .featured {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1c1c1c 100%);
+        }
+        
+        .featured-slider {
+            margin-top: 60px;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .car-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.2);
+        }
+        
+        .car-image-container {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .car-card:hover .car-image {
+            transform: scale(1.1);
+        }
+        
+        .car-details {
+            padding: 20px;
+        }
+        
+        .car-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .car-price {
+            color: var(--neon-blue);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .car-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .view-button {
+            width: 100%;
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--neon-blue);
+            padding: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .view-button:hover {
+            background: var(--neon-blue);
+            color: var(--primary-color);
+        }
+        
+        .search-section {
+            padding: 100px 50px;
+            background: var(--primary-color);
+        }
+        
+        .search-container {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        
+        .search-button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+        
+        .search-button:hover {
+            background: #ff1a3d;
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            padding: 60px 50px 30px;
+            border-top: 1px solid #222;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--neon-blue);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+        
+        @keyframes neonGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(0, 240, 255, 0.7), 0 0 10px rgba(0, 240, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(0, 240, 255, 0.9), 0 0 30px rgba(0, 240, 255, 0.7);
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(0, 240, 255, 0.7), 0 0 10px rgba(0, 240, 255, 0.5);
+            }
+        }
+        
+        .neon-text {
+            animation: neonGlow 2s infinite;
+            color: var(--neon-blue);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .featured-slider, .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .header {
+                padding: 15px 25px;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .categories, .featured, .search-section, .footer {
+                padding: 80px 30px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 50px;
+            }
+            
+            .search-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.95);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                padding: 20px 0;
+                height: calc(100vh - 80px);
+                overflow-y: auto;
+                gap: 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1.5rem 0;
+                padding: 8px 0;
+                display: block;
+                font-size: 18px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+            
+            .categories, .featured, .search-section, .footer {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+            
+            .category-grid, .featured-slider {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-container {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+                letter-spacing: 1px;
+            }
+            
+            .hero-subtitle {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+            
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+            
+            .categories, .featured, .search-section, .footer {
+                padding: 50px 15px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+            
+            .category-name {
+                font-size: 20px;
+            }
+            
+            .car-name {
+                font-size: 18px;
+            }
+            
+            .car-price {
+                font-size: 18px;
+            }
+            
+            .view-button {
+                font-size: 14px;
+            }
+            
+            .search-button {
+                font-size: 14px;
+            }
+            
+            .form-input, .form-select {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .form-label {
+                font-size: 14px;
+            }
+            
+            .footer {
+                padding: 40px 15px 20px;
+            }
+            
+            .footer-column h3 {
+                font-size: 18px;
+            }
+            
+            .footer-column p, .footer-links a {
+                font-size: 14px;
+            }
+            
+            .copyright {
+                font-size: 12px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.svg" alt="AUTOELITE">
+        </div>
+        <button class="mobile-menu-btn">☰</button>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="cars.html" class="nav-item">Cars</a>
+            <a href="bus.html" class="nav-item">Bus</a>
+            <a href="truck.html" class="nav-item">Truck&Van</a>
+            <a href="https://tawk.to/buildyourdream" class="nav-item">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Electric Forklift Trucks
+                Lifting your way to a  <span class="neon-text">cleaner future</span></h1>
+            <p class="hero-subtitle"></p>
+            
+        </div>
+    </section>
+
+    <section class="categories" id="categories">
+        <h2 class="section-title">Our Categories</h2>
+        <div class="category-grid">
+            
+            <div class="category-card" onclick="window.location.href='cars.html';">
+                <img src="auto.jpg" alt="SUV" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Auto</h3>
+                    <p class="category-count">12 vehicles available</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='bus.html';">
+                <img src="Bus.jpg" alt="City Cars" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Bus</h3>
+                    <p class="category-count">08 vehicles available</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='truck.html';">
+                <img src="truck&van.jpg" alt="Electric" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Truck & Van</h3>
+                    <p class="category-count">08 vehicles available</p>
+                </div>
+            </div>
+            <div class="category-card" onclick="window.location.href='forklift.html';">
+                <img src="forklift.jpg" alt="Classic" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-name">Forklift</h3>
+                    <p class="category-count">10 vehicles available</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="featured" id="featured">
+        <h2 class="section-title">Featured Forklift</h2>
+        <div class="featured-slider">
+            <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+                <div class="car-image-container">
+                    <img src="BYD ECB25C.jpg" alt="Sports Car" class="car-image">
+                </div>
+                <div class="car-details">
+                    <h3 class="car-name">BYD ECB25C</h3>
+                    <p class="car-price">€22,900</p>
+                    <div class="car-specs">
+                        <span>600 hp</span>
+                        <span>0-62mph in 3.6s</span>
+                        <span>2023</span>
+                    </div>
+                    <button class="view-button">View details</button>
+                </div>
+            </div>
+            <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+                <div class="car-image-container">
+                    <img src="BYD ECB16D.jpg" alt="Premium SUV" class="car-image">
+                </div>
+                <div class="car-details">
+                    <h3 class="car-name">BYD ECB16D</h3>
+                    <p class="car-price">€13,500</p>
+                    <div class="car-specs">
+                        <span>625 hp</span>
+                        <span>0-62mph in 3.8s</span>
+                        <span>2023</span>
+                    </div>
+                    <button class="view-button">View details</button>
+                </div>
+            </div>
+            <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+                <div class="car-image-container">
+                    <img src="BYD ECB18B.jpg" alt="Electric Car" class="car-image">
+                </div>
+                <div class="car-details">
+                    <h3 class="car-name">BYD ECB18B</h3>
+                    <p class="car-price">€39,990</p>
+                    <div class="car-specs">
+                        <span>1020 hp</span>
+                        <span>0-62mph in 2.1s</span>
+                        <span>2022</span>
+                    </div>
+                    <button class="view-button">View details</button>
+                </div>
+            </div>
+            <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+              <div class="car-image-container">
+                  <img src="BYD SEF25B.jpg" alt="Electric Car" class="car-image">
+              </div>
+              <div class="car-details">
+                  <h3 class="car-name">BYD T3</h3>
+                  <p class="car-price">€39,990</p>
+                  <div class="car-specs">
+                      <span>1020 hp</span>
+                      <span>0-62mph in 2.1s</span>
+                      <span>2022</span>
+                  </div>
+                  <button class="view-button">View details</button>
+              </div>
+          </div>
+          <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+            <div class="car-image-container">
+                <img src="BYD ECB16C.webp" alt="Electric Car" class="car-image">
+            </div>
+            <div class="car-details">
+                <h3 class="car-name">BYD ECB16C</h3>
+                <p class="car-price">€39,990</p>
+                <div class="car-specs">
+                    <span>1020 hp</span>
+                    <span>0-62mph in 2.1s</span>
+                    <span>2022</span>
+                </div>
+                <button class="view-button">View details</button>
+            </div>
+        </div>
+        <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+          <div class="car-image-container">
+              <img src="BYD ECB30.png" alt="Electric Car" class="car-image">
+          </div>
+          <div class="car-details">
+              <h3 class="car-name">BYD ECB30</h3>
+              <p class="car-price">€39,990</p>
+              <div class="car-specs">
+                  <span>1020 hp</span>
+                  <span>0-62mph in 2.1s</span>
+                  <span>2022</span>
+              </div>
+              <button class="view-button">View details</button>
+          </div>
+      </div>
+      <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+        <div class="car-image-container">
+            <img src="BYD ECB35.png" alt="Electric Car" class="car-image">
+        </div>
+        <div class="car-details">
+            <h3 class="car-name">BYD ECB35</h3>
+            <p class="car-price">€39,990</p>
+            <div class="car-specs">
+                <span>1020 hp</span>
+                <span>0-62mph in 2.1s</span>
+                <span>2022</span>
+            </div>
+            <button class="view-button">View details</button>
+        </div>
+    </div>
+    <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+      <div class="car-image-container">
+          <img src="BYD ECB40.png" alt="Electric Car" class="car-image">
+      </div>
+      <div class="car-details">
+          <h3 class="car-name">BYD ECB40</h3>
+          <p class="car-price">€39,990</p>
+          <div class="car-specs">
+              <span>1020 hp</span>
+              <span>0-62mph in 2.1s</span>
+              <span>2022</span>
+          </div>
+          <button class="view-button">View details</button>
+      </div>
+  </div>
+  <div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+    <div class="car-image-container">
+        <img src="BYD ECB45.jpg" alt="Electric Car" class="car-image">
+    </div>
+    <div class="car-details">
+        <h3 class="car-name">BYD ECB45</h3>
+        <p class="car-price">€39,990</p>
+        <div class="car-specs">
+            <span>1020 hp</span>
+            <span>0-62mph in 2.1s</span>
+            <span>2022</span>
+        </div>
+        <button class="view-button">View details</button>
+    </div>
+</div>
+<div class="car-card" onclick="window.location.href='https://tawk.to/buildyourdream';">
+    <div class="car-image-container">
+        <img src="BYD ECB50.jpg" alt="Electric Car" class="car-image">
+    </div>
+    <div class="car-details">
+        <h3 class="car-name">BYD ECB50</h3>
+        <p class="car-price">€39,990</p>
+        <div class="car-specs">
+            <span>1020 hp</span>
+            <span>0-62mph in 2.1s</span>
+            <span>2022</span>
+        </div>
+        <button class="view-button">View details</button>
+    </div>
+</div>
+    </section>
+
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About BYD Europe B.V</h3>
+                <p>Founded in November 1994, BYD, which stands for “Build Your Dreams,” is a high-tech multinational company and the world leader in electric and plug-in hybrid vehicles. As a Fortune Global 500 enterprise, </p>
+                <p>BYD relentlessly innovates to create a sustainable future.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#featured">Featured Vehicles</a></li>
+                    <li><a href="#search">Advanced Search</a></li>
+                    <li><a href="#">Financing</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <a href="https://wa.me/33123456789" target="_blank" style="text-decoration: none;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+                         alt="WhatsApp" width="30" height="30" style="vertical-align: middle;">
+                         Contact us on WhatsApp
+                </a>
+                <p>Hours: 24/24  7/7<br>available all time</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 BYD Company Limited. All rights reserved..
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+        
+        // Close mobile menu when clicking on a nav item
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
