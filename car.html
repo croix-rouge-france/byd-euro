@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Model X - Voiture Électrique Premium</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(20, 19, 19, 0.644);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #logo {
+            height: 40px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        .cta-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #004c99;
+            transform: scale(1.05);
+        }
+
+        /* Menu mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Section héros */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #f9f9f9;
+            position: relative;
+            padding-top: 70px;
+            overflow: hidden;
+        }
+
+        #hero-img-container {
+            width: 100%;
+            height: 70%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        #hero-content {
+            padding: 2rem 5%;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .slogan {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .key-features {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .feature-badge {
+            display: flex;
+            align-items: center;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .feature-badge img {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+        }
+
+        /* Section description */
+        #description {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .description-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .description-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .video-container {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .highlights {
+            margin: 1.5rem 0;
+        }
+
+        .highlights li {
+            margin-bottom: 0.5rem;
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .highlights li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        /* Galerie */
+        #gallery {
+            padding: 5rem 5%;
+            background-color: #f9f9f9;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .view-360 {
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .view-360-container {
+            width: 100%;
+            height: 400px;
+            margin: 1rem auto;
+            background-color: #eee;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .view-360-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .rotate-controls {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .rotate-btn {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .rotate-btn:hover {
+            background-color: white;
+        }
+
+        /* Spécifications techniques */
+        #specs {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .specs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .specs-table {
+            flex: 1;
+            min-width: 300px;
+            border-collapse: collapse;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .specs-table th {
+            text-align: left;
+            padding: 1rem 0;
+            color: #777;
+            font-weight: 600;
+        }
+
+        .specs-table td {
+            padding: 1rem 0;
+            font-weight: 500;
+        }
+
+        .specs-graphics {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .spec-graphic {
+            display: flex;
+            align-items: center;
+        }
+
+        .spec-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spec-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .spec-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Personnalisation */
+        #customization {
+            padding: 5rem 10%;
+            background-color: #f9f9f9;
+        }
+
+        .customization-container {
+            margin-top: 2rem;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.active {
+            border-color: #0066cc;
+        }
+
+        .color-preview {
+            width: 100%;
+            height: 300px;
+            margin: 1rem 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .options-group {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .option-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .option-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .option-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .option-checkbox {
+            margin-right: 0.5rem;
+            width: 18px;
+            height: 18px;
+        }
+
+        .price-summary {
+            background-color: #f0f8ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0066cc;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+        }
+
+        /* Témoignages */
+        #testimonials {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .testimonials-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            min-width: 300px;
+            flex: 0 0 calc(33.333% - 1rem);
+            scroll-snap-align: start;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .rating {
+            color: gold;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .customer-name {
+            font-weight: 600;
+        }
+
+        /* Comparaison */
+        #comparison {
+            padding: 5rem 10%;
+            background-color: #f9f9f9;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table th {
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .comparison-table td {
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        .feature-available {
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .model-highlight {
+            background-color: rgba(0, 102, 204, 0.05);
+        }
+
+        /* Section de contact */
+        #contact {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #0066cc;
+            outline: none;
+        }
+
+        .contact-actions {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-btn {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .contact-btn-primary {
+            background-color: #0066cc;
+            color: white;
+        }
+
+        .contact-btn-primary:hover {
+            background-color: #004c99;
+        }
+
+        .contact-btn-secondary {
+            background-color: white;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+
+        .contact-btn-secondary:hover {
+            background-color: #f0f8ff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #0066cc;
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .key-features {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .feature-badge {
+                margin: 0.2rem 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .slogan {
+                font-size: 1.1rem;
+            }
+
+            .testimonial {
+                min-width: 260px;
+                flex: 0 0 calc(100% - 1rem);
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <img src="logo.svg" alt="Logo" id="logo">
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Voitures</a></li>
+                <li><a href="#">Promotions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="cta-button">Achetez maintenant</button>
+        <button class="mobile-menu-btn">☰</button>
+    </header>
+
+    <!-- Section héros -->
+    <section id="hero">
+        <div id="hero-img-container">
+            <img src="/api/placeholder/1200/600" alt="Tesla Model X" id="hero-img">
+        </div>
+        <div id="hero-content">
+            <h1 class="fade-in">Tesla Model X</h1>
+            <p class="slogan fade-in delay-1">Redécouvrez la conduite avec zéro émission.</p>
+            <div class="key-features fade-in delay-2">
+                <div class="feature-badge">
+                    <img src="/api/placeholder/20/20" alt="Autonomie">
+                    Autonomie de 500 km
+                </div>
+                <div class="feature-badge">
+                    <img src="/api/placeholder/20/20" alt="Recharge">
+                    Recharge rapide en 30 minutes
+                </div>
+                <div class="feature-badge">
+                    <img src="/api/placeholder/20/20" alt="Technologie">
+                    Technologie de conduite autonome
+                </div>
+            </div>
+            <button class="cta-button fade-in delay-3">En savoir plus</button>
+        </div>
+    </section>
+
+    <!-- Section description -->
+    <section id="description">
+        <h2>Découvrez la Tesla Model X</h2>
+        <div class="description-container">
+            <div class="description-text">
+                <p>La Tesla Model X représente l'avenir de la mobilité électrique. Combinant performances exceptionnelles, autonomie impressionnante et technologies de pointe, cette voiture électrique redéfinit l'expérience de conduite.</p>
+                <p>Son design aérodynamique et futuriste ne sacrifie rien au confort, offrant un espace intérieur spacieux et luxueux pour tous les passagers.</p>
+                <ul class="highlights">
+                    <li>100% électrique avec zéro émission</li>
+                    <li>Performance inégalée avec accélération de 0 à 100 km/h en 3,9 secondes</li>
+                    <li>Design futuriste avec portes Falcon Wing</li>
+                    <li>Système de conduite autonome de dernière génération</li>
+                    <li>Écran tactile 17 pouces avec connectivité avancée</li>
+                </ul>
+            </div>
+            <div class="video-container">
+                <img src="/api/placeholder/800/600" alt="Vidéo de présentation">
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="gallery">
+        <h2>Galerie</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Tesla Model X - Extérieur">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Tesla Model X - Intérieur">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Tesla Model X - Tableau de bord">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Tesla Model X - Coffre">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Tesla Model X - Portes Falcon">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/200" alt="Tesla Model X - Recharge">
+            </div>
+        </div>
+        <div class="view-360">
+            <h3>Vue 360°</h3>
+            <div class="view-360-container">
+                <img src="/api/placeholder/800/400" alt="Vue 360° Tesla Model X">
+                <div class="rotate-controls">
+                    <button class="rotate-btn">⟲</button>
+                    <button class="rotate-btn">⟳</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spécifications techniques -->
+    <section id="specs">
+        <h2>Caractéristiques techniques</h2>
+        <div class="specs-container">
+            <table class="specs-table">
+                <tr>
+                    <th>Batterie</th>
+                    <td>100 kWh Lithium-ion</td>
+                </tr>
+                <tr>
+                    <th>Autonomie</th>
+                    <td>500 km (WLTP)</td>
+                </tr>
+                <tr>
+                    <th>Puissance</th>
+                    <td>670 ch (500 kW)</td>
+                </tr>
+                <tr>
+                    <th>Accélération</th>
+                    <td>0-100 km/h en 3,9 secondes</td>
+                </tr>
+                <tr>
+                    <th>Vitesse max</th>
+                    <td>250 km/h</td>
+                </tr>
+                <tr>
+                    <th>Recharge</th>
+                    <td>30 min pour 80% (Superchargeur)</td>
+                </tr>
+                <tr>
+                    <th>Poids</th>
+                    <td>2,550 kg</td>
+                </tr>
+                <tr>
+                    <th>Dimensions</th>
+                    <td>L 5,05m x l 2,07m x H 1,68m</td>
+                </tr>
+            </table>
+            <div class="specs-graphics">
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="/api/placeholder/30/30" alt="Vitesse">
+                    </div>
+                    <div>
+                        <div class="spec-value">250 km/h</div>
+                        <div class="spec-label">Vitesse maximale</div>
+                    </div>
+                </div>
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="/api/placeholder/30/30" alt="Autonomie">
+                    </div>
+                    <div>
+                        <div class="spec-value">500 km</div>
+                        <div class="spec-label">Autonomie (WLTP)</div>
+                    </div>
+                </div>
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="/api/placeholder/30/30" alt="Accélération">
+                    </div>
+                    <div>
+                        <div class="spec-value">3,9 s</div>
+                        <div class="spec-label">0-100 km/h</div>
+                    </div>
+                </div>
+                <div class="spec-graphic">
+                    <div class="spec-icon">
+                        <img src="/api/placeholder/30/30" alt="Recharge">
+                    </div>
+                    <div>
+                        <div class="spec-value">30 min</div>
+                        <div class="spec-label">Recharge rapide (80%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personnalisation -->
+    <section id="customization">
+        <h2>Personnalisez votre Tesla Model X</h2>
+        <div class="customization-container">
+            <div class="color-options">
+                <div class="color-option active" style="background-color: #000000;"></div>
+                <div class="color-option" style="background-color: #FFFFFF;"></div>
+                <div class="color-option" style="background-color: #FF0000;"></div>
+                <div class="color-option" style="background-color: #0000FF;"></div>
+                <div class="color-option" style="background-color: #888888;"></div>
+            </div>
+            <div class="color-preview">
+                <img src="/api/placeholder/800/300" alt="Tesla Model X - Noir">
+            </div>
+            <div class="options-container">
+                <div class="options-group">
+                    <div class="option-title">Intérieur</div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="radio" name="interior" id="interior-black" class="option-checkbox" checked>
+                            <label for="interior-black">Noir Premium</label>
+                        </div>
+                        <div class="option-price">Inclus</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="radio" name="interior" id="interior-white" class="option-checkbox">
+                            <label for="interior-white">Blanc Premium</label>
+                        </div>
+                        <div class="option-price">+1 500 €</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="radio" name="interior" id="interior-beige" class="option-checkbox">
+                            <label for="interior-beige">Beige Premium</label>
+                        </div>
+                        <div class="option-price">+1 500 €</div>
+                    </div>
+                </div>
+                <div class="options-group">
+                    <div class="option-title">Équipements</div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="checkbox" id="autopilot" class="option-checkbox">
+                            <label for="autopilot">Autopilot amélioré</label>
+                        </div>
+                        <div class="option-price">+3 800 €</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="checkbox" id="fsd" class="option-checkbox">
+                            <label for="fsd">Capacité de conduite 100% autonome</label>
+                        </div>
+                        <div class="option-price">+7 500 €</div>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-name">
+                            <input type="checkbox" id="premium-audio" class="option-checkbox">
+                            <label for="premium-audio">Système audio premium</label>
+                        </div>
+                        <div class="option-price">+2 200 €</div>
+                    </div>
+                </div>
+            </div>
+            <div class="price-summary">
+                <div class="price-row">
+                    <div>Prix de base</div>
+                    <div>89 990 €</div>
+                </div>
+                <div class="price-row">
+                    <div>Options</div>
+                    <div>0 €</div>
+                </div>
+                <div class="price-row total-price">
+                    <div>Prix total</div>
+                    <div>89 990 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Témoignages -->
+    <section id="testimonials">
+        <h2>Témoignages de clients</h2>
+        <div class="testimonials-container">
+            <div class="testimonial">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Après 6 mois d'utilisation, je suis totalement conquis. L'autonomie est parfaite pour mes besoins quotidiens et les performances sont impressionnantes."</p>
+                <div class="customer-name">Jean D.</div>
+            </div>
+            <div class="testimonial">
+                <div class="rating">★★★★☆</div>
+                <p class="testimonial-text">"Excellente voiture, confortable et silencieuse. Le réseau de recharge Tesla est un vrai plus pour les longs trajets."</p>
+                <div class="customer-name">Marie L.</div>
+            </div>
+            <div class="testimonial">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Les fonctionnalités d'aide à la conduite sont révolutionnaires. C'est un vrai plaisir de conduire cette voiture tous les jours."</p>
+                <div class="customer-name">Thomas B.</div>
+            </div>
+            <div class="testimonial">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">"Le rapport qualité-prix est excellent. Les économies sur le carburant et l'entretien sont significatives sur le long terme."</p>
+                <div class="customer-name">Sophie M.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparaison -->
+    <section id="comparison">
+        <h2>Comparaison avec d'autres modèles</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Caractéristiques</th>
+                    <th class="model-highlight">Tesla Model X</th>
+                    <th>Audi e-tron</th>
+                    <th>Mercedes EQC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Prix de départ</td>
+                    <td class="model-highlight">89 990 €</td>
+                    <td>82 500 €</td>
+                    <td>84 800 €</td>
+                </tr>
+                <tr>
+                    <td>Autonomie (WLTP)</td>
+                    <td class="model-highlight">500 km</td>
+                    <td>436 km</td>
+                    <td>417 km</td>
+                </tr>
+                <tr>
+                    <td>Puissance</td>
+                    <td class="model-highlight">670 ch</td>
+                    <td>408 ch</td>
+                    <td>402 ch</td>
+                </tr>
+                <tr>
+                    <td>0-100 km/h</td>
+                    <td class="model-highlight">3,9 s</td>
+                    <td>5,7 s</td>
+                    <td>5,1 s</td>
+                </tr>
+                <tr>
+                    <td>Temps de recharge (rapide)</td>
+                    <td class="model-highlight">30 min</td>
+                    <td>40 min</td>
+                    <td>40 min</td>
+                </tr>
+                <tr>
+                    <td>Capacité de conduite autonome</td>
+                    <td class="model-highlight"><span class="feature-available">Oui</span></td>
+                    <td>Partielle</td>
+                    <td>Partielle</td>
+                </tr>
+                <tr>
+                    <td>Places</td>
+                    <td class="model-highlight">7</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Garantie batterie</td>
+                    <td class="model-highlight">8 ans</td>
+                    <td>8 ans</td>
+                    <td>8 ans</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section de contact -->
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Envoyer</button>
+                </form>
+            </div>
+            <div class="contact-actions">
+                <button class="contact-btn contact-btn-primary">Acheter maintenant</button>
+                <button class="contact-btn contact-btn-secondary">Réserver un essai</button>
+                <button class="contact-btn contact-btn-secondary">Demander un devis</button>
+                <button class="contact-btn contact-btn-secondary">Trouver un concessionnaire</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>À propos</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Nos valeurs</a></li>
+                    <li><a href="#">Développement durable</a></li>
+                    <li><a href="#">Carrières</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Assistance</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support technique</a></li>
+                    <li><a href="#">Garantie</a></li>
+                    <li><a href="#">Manuels</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">Nous contacter</a></li>
+                    <li><a href="#">Concessionnaires</a></li>
+                    <li><a href="#">Presse</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tesla. Tous droits réservés.</p>
+            <p><a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a></p>
+        </div>
+    </footer>
+
+    <!-- Script JS -->
+    <script>
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu mobile
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Gestion du bouton "En savoir plus"
+            const learnMoreBtn = document.querySelector('#hero .cta-button');
+            const descriptionSection = document.querySelector('#description');
+            
+            learnMoreBtn.addEventListener('click', function() {
+                descriptionSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Gestion de la personnalisation des couleurs
+            const colorOptions = document.querySelectorAll('.color-option');
+            const colorPreviewImg = document.querySelector('.color-preview img');
+            const colorNames = ['Noir', 'Blanc', 'Rouge', 'Bleu', 'Gris'];
+            
+            colorOptions.forEach((option, index) => {
+                option.addEventListener('click', function() {
+                    // Mise à jour de la classe active
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mise à jour de l'image et du texte alt
+                    colorPreviewImg.alt = `Tesla Model X - ${colorNames[index]}`;
+                });
+            });
+            
+            // Gestion du calcul du prix
+            const optionCheckboxes = document.querySelectorAll('.option-checkbox');
+            const priceBase = 89990;
+            const priceOptions = document.querySelector('.price-row:nth-child(2) div:last-child');
+            const priceTotal = document.querySelector('.total-price div:last-child');
+            
+            optionCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    let optionsTotal = 0;
+                    
+                    // Calcul pour l'intérieur
+                    const interiorOptions = document.querySelectorAll('input[name="interior"]');
+                    interiorOptions.forEach(option => {
+                        if (option.checked && option.id !== 'interior-black') {
+                            optionsTotal += 1500;
+                        }
+                    });
+                    
+                    // Calcul pour les équipements
+                    if (document.getElementById('autopilot').checked) {
+                        optionsTotal += 3800;
+                    }
+                    if (document.getElementById('fsd').checked) {
+                        optionsTotal += 7500;
+                    }
+                    if (document.getElementById('premium-audio').checked) {
+                        optionsTotal += 2200;
+                    }
+                    
+                    // Mise à jour des prix affichés
+                    priceOptions.textContent = optionsTotal.toLocaleString() + ' €';
+                    priceTotal.textContent = (priceBase + optionsTotal).toLocaleString() + ' €';
+                });
+            });
+            
+            // Simulation de la vue 360°
+            const rotateButtons = document.querySelectorAll('.rotate-btn');
+            const view360Img = document.querySelector('.view-360-container img');
+            let currentRotation = 1;
+            const totalRotations = 8; // Nombre d'images de rotation
+            
+            rotateButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    // Rotation gauche ou droite
+                    if (index === 0) { // Bouton gauche
+                        currentRotation = (currentRotation - 1 + totalRotations) % totalRotations || totalRotations;
+                    } else { // Bouton droit
+                        currentRotation = (currentRotation % totalRotations) + 1;
+                    }
+                    
+                    // Mise à jour de l'image (simulée)
+                    view360Img.alt = `Vue 360° Tesla Model X - Position ${currentRotation}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
